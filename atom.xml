@@ -6,7 +6,7 @@
   <link href="https://liushuaishellby.xyz/atom.xml" rel="self"/>
   
   <link href="https://liushuaishellby.xyz/"/>
-  <updated>2021-12-25T15:34:51.138Z</updated>
+  <updated>2021-12-27T12:45:56.473Z</updated>
   <id>https://liushuaishellby.xyz/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>正则表达式的学习（1）</title>
+    <link href="https://liushuaishellby.xyz/posts/ccbf42c3.html"/>
+    <id>https://liushuaishellby.xyz/posts/ccbf42c3.html</id>
+    <published>2021-12-27T12:27:00.000Z</published>
+    <updated>2021-12-27T12:45:56.473Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h3><p>今天学习的是 在python中使用正则表达式</p><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> remy_string <span class="token operator">=</span> <span class="token string">"aab22bsihhfshi"</span><span class="token comment"># 使用match 方法 匹配的字符必须是第一个开头的 注意在匹配字符前面最好加上r。防止识别不了\n...等等</span><span class="token keyword">print</span><span class="token punctuation">(</span>re<span class="token punctuation">.</span>match<span class="token punctuation">(</span><span class="token string">r'a'</span><span class="token punctuation">,</span>my_string<span class="token punctuation">)</span><span class="token punctuation">)</span>   <span class="token comment"># &lt;re.Match object; span=(0, 1), match='a'&gt;</span><span class="token comment"># 使用 search 方法 匹配的字符 可以在任意位置</span><span class="token keyword">print</span><span class="token punctuation">(</span>re<span class="token punctuation">.</span>search<span class="token punctuation">(</span><span class="token string">r'b'</span><span class="token punctuation">,</span>my_string<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment"># &lt;re.Match object; span=(2, 3), match='b'&gt;</span><span class="token comment"># 使用 findall方法 匹配的字符 所有的数据。返回的是一个列表</span><span class="token keyword">print</span><span class="token punctuation">(</span>re<span class="token punctuation">.</span>findall<span class="token punctuation">(</span><span class="token string">r'a'</span><span class="token punctuation">,</span>my_string<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment"># ['a', 'a']</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h2 id="匹配"><a href="#匹配" class="headerlink" title="匹配"></a>匹配</h2><p>还有\d是匹配数字。\D匹配非数字</p><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">print</span><span class="token punctuation">(</span>re<span class="token punctuation">.</span>search<span class="token punctuation">(</span><span class="token string">r'\d'</span><span class="token punctuation">,</span> my_string<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment"># &lt;re.Match object; span=(3, 4), match='2'&gt;</span><span class="token keyword">print</span><span class="token punctuation">(</span>re<span class="token punctuation">.</span>search<span class="token punctuation">(</span><span class="token string">r'\D'</span><span class="token punctuation">,</span> my_string<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment"># &lt;re.Match object; span=(0, 1), match='a'&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><h2 id="数量匹配"><a href="#数量匹配" class="headerlink" title="数量匹配"></a>数量匹配</h2><p>*代表模糊查询。匹配0此或者无数次。一般以最小次数匹配  即什么都没有</p><p>+代表  匹配1次或者无数次。最少也会匹配一次  ，一次做最大次数匹配</p><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">print</span><span class="token punctuation">(</span>re<span class="token punctuation">.</span>search<span class="token punctuation">(</span><span class="token string">r'\d*'</span><span class="token punctuation">,</span> my_string<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment"># &lt;re.Match object; span=(0, 0), match=''&gt;</span><span class="token keyword">print</span><span class="token punctuation">(</span>re<span class="token punctuation">.</span>search<span class="token punctuation">(</span><span class="token string">r'\d+'</span><span class="token punctuation">,</span> my_string<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment"># &lt;re.Match object; span=(3, 5), match='22'&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><h2 id="group-属性方法-直接可以获取到匹配的字符。"><a href="#group-属性方法-直接可以获取到匹配的字符。" class="headerlink" title="group() 属性方法 直接可以获取到匹配的字符。"></a>group() 属性方法 直接可以获取到匹配的字符。</h2><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">print</span><span class="token punctuation">(</span>re<span class="token punctuation">.</span>search<span class="token punctuation">(</span><span class="token string">r'\d+'</span><span class="token punctuation">,</span> my_string<span class="token punctuation">)</span><span class="token punctuation">.</span>group<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment"># 22</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>​        今天暂时就这么多i 嘿嘿。剩余的明天继续补充完整！1</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h3 id=&quot;正则表达式&quot;&gt;&lt;a href=&quot;#正则表达式&quot; class=&quot;headerlink&quot; title=&quot;正则表达式&quot;&gt;&lt;/a&gt;正则表达式&lt;/h3&gt;&lt;p&gt;今天学习的是 在python中使用正则表达式&lt;/p&gt;
+&lt;pre class=&quot;line-numbers langua</summary>
+      
+    
+    
+    
+    <category term="自动化测试" scheme="https://liushuaishellby.xyz/categories/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/"/>
+    
+    
+    <category term="cesium" scheme="https://liushuaishellby.xyz/tags/cesium/"/>
+    
+  </entry>
   
   <entry>
     <title>第一天</title>
