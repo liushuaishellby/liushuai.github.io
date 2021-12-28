@@ -29,6 +29,31 @@
     
     
     <entry>
+      <title>正则表达式的学习（2）</title>
+      <link href="/posts/de0aed2d.html"/>
+      <url>/posts/de0aed2d.html</url>
+      
+        <content type="html"><![CDATA[<h1 id="使用正则表达式-。替换多个字段"><a href="#使用正则表达式-。替换多个字段" class="headerlink" title="使用正则表达式 。替换多个字段"></a>使用正则表达式 。替换多个字段</h1><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> re<span class="token keyword">from</span> midleware<span class="token punctuation">.</span>handler <span class="token keyword">import</span> Handlermy_str <span class="token operator">=</span> <span class="token string">'{"username": "#phone#", "password": "abc123456"}'</span><span class="token comment"># 创建匹配表达式</span>part <span class="token operator">=</span> <span class="token string">r"#(.*?)#"</span><span class="token comment"># 获取key 目的是查询要替换的字符 是哪个字段</span>key <span class="token operator">=</span> re<span class="token punctuation">.</span>search<span class="token punctuation">(</span>part<span class="token punctuation">,</span> my_str<span class="token punctuation">)</span><span class="token punctuation">.</span>group<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token keyword">print</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span><span class="token comment"># 创建value 用于使用类的属性 来获取要替换的数据</span>value <span class="token operator">=</span> <span class="token builtin">getattr</span><span class="token punctuation">(</span>Handler<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> key<span class="token punctuation">,</span> <span class="token string">''</span><span class="token punctuation">)</span><span class="token comment"># 开始替换    因为这个类里面没phone这个属性 所以这里他会替换成空</span>a <span class="token operator">=</span> re<span class="token punctuation">.</span>sub<span class="token punctuation">(</span>part<span class="token punctuation">,</span> value<span class="token punctuation">,</span> my_str<span class="token punctuation">,</span> count<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token keyword">print</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span>  <span class="token comment"># 输出 {"username": "", "password": "abc123456"}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>最后将代码封装</p><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">replace_data</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">:</span>    <span class="token comment"># 注意传入的data必须是个字符串</span>    <span class="token keyword">import</span> re    <span class="token comment"># 创建匹配表达式</span>    part <span class="token operator">=</span> <span class="token string">r"#(.*?)#"</span>    <span class="token comment"># 使用while循环 直到字符串没有#(.*?)#的字符为止。</span>    <span class="token keyword">while</span> re<span class="token punctuation">.</span>search<span class="token punctuation">(</span>part<span class="token punctuation">,</span> data<span class="token punctuation">)</span><span class="token punctuation">:</span>    <span class="token comment"># 获取key 目的是查询要替换的字符 是哪个字段</span>    key <span class="token operator">=</span> re<span class="token punctuation">.</span>search<span class="token punctuation">(</span>part<span class="token punctuation">,</span> data<span class="token punctuation">)</span><span class="token punctuation">.</span>group<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>    <span class="token keyword">print</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span>    <span class="token comment"># 创建value 用于使用类的属性 来获取要替换的数据</span>    value <span class="token operator">=</span> <span class="token builtin">getattr</span><span class="token punctuation">(</span>类名<span class="token punctuation">,</span> key<span class="token punctuation">,</span> <span class="token string">''</span><span class="token punctuation">)</span>    <span class="token comment"># 开始替换    因为这个类里面没phone这个属性 所以这里他会替换成空。</span>    data <span class="token operator">=</span> re<span class="token punctuation">.</span>sub<span class="token punctuation">(</span>part<span class="token punctuation">,</span> value<span class="token punctuation">,</span> data<span class="token punctuation">,</span> count<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">)</span>    <span class="token keyword">return</span> data<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> 自动化测试 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> cesium </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>第一天</title>
       <link href="/posts/4fc46fc5.html"/>
       <url>/posts/4fc46fc5.html</url>
