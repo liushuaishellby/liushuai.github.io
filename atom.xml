@@ -6,7 +6,7 @@
   <link href="https://liushuaishellby.xyz/atom.xml" rel="self"/>
   
   <link href="https://liushuaishellby.xyz/"/>
-  <updated>2021-12-28T12:47:19.550Z</updated>
+  <updated>2021-12-29T13:10:47.874Z</updated>
   <id>https://liushuaishellby.xyz/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>正则表达式的学习（2）</title>
+    <link href="https://liushuaishellby.xyz/posts/de0aed2d.html"/>
+    <id>https://liushuaishellby.xyz/posts/de0aed2d.html</id>
+    <published>2021-12-29T12:27:00.000Z</published>
+    <updated>2021-12-29T13:10:47.874Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Python3在创建文件及文件夹目录的时候windows10文件名不能包含的特殊符号处理转义-OSError-WinError-123-文件名、目录名或卷标语法不正确时处理办法"><a href="#Python3在创建文件及文件夹目录的时候windows10文件名不能包含的特殊符号处理转义-OSError-WinError-123-文件名、目录名或卷标语法不正确时处理办法" class="headerlink" title="Python3在创建文件及文件夹目录的时候windows10文件名不能包含的特殊符号处理转义;OSError: [WinError 123] 文件名、目录名或卷标语法不正确时处理办法"></a>Python3在创建文件及文件夹目录的时候windows10文件名不能包含的特殊符号处理转义;OSError: [WinError 123] 文件名、目录名或卷标语法不正确时处理办法</h1><p>这个问题难住了我好几天  终于发现了</p><p>查了一下，window有9个特殊字符在命名不能使用：分别是下面 char _list 每个元素：</p><pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">char_list <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'*'</span><span class="token punctuation">,</span><span class="token string">'|'</span><span class="token punctuation">,</span><span class="token string">':'</span><span class="token punctuation">,</span><span class="token string">'?'</span><span class="token punctuation">,</span><span class="token string">'/'</span><span class="token punctuation">,</span><span class="token string">'&lt;'</span><span class="token punctuation">,</span><span class="token string">'&gt;'</span><span class="token punctuation">,</span><span class="token string">'"'</span><span class="token punctuation">,</span><span class="token string">'\\'</span><span class="token punctuation">]</span># 在命名时不能使用这些符号。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><p> with open(reports_path, mode=’a’, encoding=’utf-8’) as f:<br>OSError: [Errno 22] Invalid argument: ‘D:\pythonProject\接口自动化\reports\report2021-12-29 21:08:52.txt’</p><pre class="line-numbers language-python" data-language="python"><code class="language-python">reports_filename <span class="token operator">=</span> <span class="token string">'report{}.txt'</span><span class="token punctuation">.</span><span class="token builtin">format</span><span class="token punctuation">(</span>time<span class="token punctuation">.</span>strftime<span class="token punctuation">(</span><span class="token string">'%Y-%m-%d %H:%M:%S'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token comment"># 测试报告路径</span>reports_path <span class="token operator">=</span> os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>join<span class="token punctuation">(</span>config_path<span class="token punctuation">.</span>REPORTS_PATH<span class="token punctuation">,</span> reports_filename<span class="token punctuation">)</span><span class="token comment"># 运行用例</span><span class="token keyword">with</span> <span class="token builtin">open</span><span class="token punctuation">(</span>reports_path<span class="token punctuation">,</span> mode<span class="token operator">=</span><span class="token string">'a'</span><span class="token punctuation">,</span> encoding<span class="token operator">=</span><span class="token string">'utf-8'</span><span class="token punctuation">)</span> <span class="token keyword">as</span> f<span class="token punctuation">:</span>    runner <span class="token operator">=</span> unittest<span class="token punctuation">.</span>TextTestRunner<span class="token punctuation">(</span>stream<span class="token operator">=</span>f<span class="token punctuation">,</span> verbosity<span class="token operator">=</span><span class="token number">2</span><span class="token punctuation">)</span>    runner<span class="token punctuation">.</span>run<span class="token punctuation">(</span>sutie<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>如果使用英文符号的”:”号  则会报错  把”：”替换为 中文的： 就欧克了  这个很蛋疼 具体原因不知道。但是如果只有一个英文的”:”号 也不获报错。</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;Python3在创建文件及文件夹目录的时候windows10文件名不能包含的特殊符号处理转义-OSError-WinError-123-文件名、目录名或卷标语法不正确时处理办法&quot;&gt;&lt;a href=&quot;#Python3在创建文件及文件夹目录的时候windows10文件</summary>
+      
+    
+    
+    
+    <category term="自动化测试" scheme="https://liushuaishellby.xyz/categories/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>正则表达式的学习（2）</title>
